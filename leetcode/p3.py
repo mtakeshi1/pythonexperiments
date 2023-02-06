@@ -4,7 +4,7 @@ class Solution:
         max_so_far = 0
         last_reset = 0
         for i, c in enumerate(s2):
-            if substrings.get(c) is not None:
+            if c in substrings:
                 max_so_far = max(max_so_far, i - last_reset)
                 last_reset = substrings[c] + 1
                 substrings = {cc: ii+last_reset for ii, cc in enumerate(s2[last_reset:i+1])}
