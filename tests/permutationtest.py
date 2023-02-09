@@ -1,6 +1,7 @@
 import unittest
 import permutation
 
+
 class SolTest(unittest.TestCase):
     def test1(self):
         sol = permutation.Solution()
@@ -12,4 +13,4 @@ class SolTest(unittest.TestCase):
 
     def test3(self):
         sol = permutation.Solution()
-        self.assertEqual(False, sol.checkInclusion(s1 = "ab", s2 = "eidboaoo"))
+        self.assertEqual(False, sol.checkInclusion(s1="ab", s2="eidboaoo"))
