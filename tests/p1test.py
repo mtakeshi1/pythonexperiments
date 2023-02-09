@@ -1,5 +1,5 @@
 import unittest
-from p1 import Solution
+from leetcode.p1 import Solution
 
 
 class MyTestCase(unittest.TestCase):

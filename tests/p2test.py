@@ -1,5 +1,5 @@
 import unittest
-from p2 import ListNode, Solution
+from leetcode.p2 import ListNode, Solution
 
 
 class MyTestCase(unittest.TestCase):

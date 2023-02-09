@@ -1,5 +1,5 @@
 import unittest
-from p438 import Solution
+from leetcode.p438 import Solution
 
 
 class SolTest(unittest.TestCase):
