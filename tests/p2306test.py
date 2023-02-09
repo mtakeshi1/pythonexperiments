@@ -1,16 +1,23 @@
 import unittest
-from p2306 import Solution
+from leetcode.p2306 import Solution
 
 
 class MyTestCase(unittest.TestCase):
     def test_1(self):
-        self.assertEqual(6, Solution().distinctNames(["coffee", "donuts", "time", "toffee"]))
+        self.assertEqual(6, Solution().distinctNames4(["coffee", "donuts", "time", "toffee"]))
 
     def test_2(self):
-        self.assertEqual(0, Solution().distinctNames(["lack", "back"]))
+        self.assertEqual(0, Solution().distinctNames3(["lack", "back"]))
+
+    def test_4(self):
+        # ilrgtxxdj allqfngl
+        # allqfngl ilrgtxxdj
+        # rllqfngl ilrgtxxdj
+        # rllqfngl ilrgtxxdj
+        self.assertEqual(4, Solution().distinctNames4(["alrgtxxdj", "illqfngl", "rlrgtxxdj"]))
 
     def test_3(self):
-        self.assertEqual(58289912, Solution().distinctNames(
+        self.assertEqual(58289912, Solution().distinctNames4(
             ["soth", "cdmxv", "kec", "gxac", "f", "dkg", "fbjasepo", "ffpfv", "lkorxv", "fiogt", "yydiiz", "mbdkgsle",
              "fxk", "dex", "cysl", "bjtacetyh", "fkieusm", "vz", "tfpfv", "jn", "kzrsdsykpb", "y", "roedo",
              "rzbyvkeyhr", "cq", "gmxywsacpr", "epaktad", "mlo", "fc", "zmoogock", "xnwutmubf", "cuj", "pemccxdwf", "x",
