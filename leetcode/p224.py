@@ -4,9 +4,11 @@ from typing import Optional
 class Solution:
     # expression ::= factor | expression + factor | expression - factor | - expression
     # factor     ::= number | ( expression ) | - factor
-    input = ''
-    pos = 0
     numbers = set('0123456789')
+
+    def __init__(self):
+        self.input = None
+        self.pos = 0
 
     def trim(self):
         while self.pos < len(self.input) and self.input[self.pos] == ' ':
@@ -70,4 +72,5 @@ class Solution:
 
     def calculate(self, s: str) -> int:
         self.input = s
+        self.pos = 0
         return self.parse_exp()
