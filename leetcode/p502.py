@@ -1,8 +1,28 @@
 from collections import deque
 from typing import List
-
+import heapq
 
 class Solution:
+
+    def findMaximizedCapitalGreedy(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+        money = w
+        reqs = []
+        profs = []
+        for i in range(len(profits)):
+            if capital[i] <= money:
+                heapq.heappush(profs, -profits[i])
+            else:
+                heapq.heappush(reqs, (capital[i], i))
+
+        for _ in range(k):
+            if len(profs) == 0:
+                break
+            best = heapq.heappop(profs)
+            money += -best
+            while len(reqs) > 0 and reqs[0][0] <= money:
+                i = heapq.heappop(reqs)[1]
+                heapq.heappush(profs, -profits[i])
+        return money
 
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         previous = [w for _ in range(len(profits))]
