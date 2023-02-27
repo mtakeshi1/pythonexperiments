@@ -12,20 +12,12 @@ class Solution:
     def minimumDeviation(self, nums: List[int]) -> int:
         if len(nums) == 0:
             return 0
-        s = SortedSet(nums)
-        changed = True
-        r = max(s) - min(s)
-        while changed:
-            changed = False
-            while min(s) % 2 == 1 and abs(min(s) * 2 < max(s)) < max(s) - min(s):
-                a = s.pop(0)
-                s.add(a * 2)
-                changed = True
-            while max(s) % 2 == 0 and abs(max(s) // 2 - min(s)) < max(s) - min(s):
-                a = s.pop()
-                s.add(a // 2)
-                changed = True
-            if max(s) - min(s) == r:
-                break
-            r = max(s) - min(s)
-        return max(s) - min(s)
+        s = SortedSet([n * 2 if n % 2 == 1 else n for n in nums])
+        min_f = max(s) - min(s)
+        while s[-1] % 2 == 0:
+            v = s.pop() // 2
+            s.add(v)
+            min_f = min(min_f, s[-1] - s[0])
+        return min_f
+
+
