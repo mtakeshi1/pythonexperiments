@@ -49,11 +49,7 @@ def parse_file(fileorstream):
         intervals[(mintime, maxtime)] = programs
 
     for key, val in intervals.items():
-
         print(f'{formatdate(key[0])}\t{formatdate(key[1])}\t{val}')
-
-
-
 
 
 if len(argv) < 2:
@@ -65,10 +61,5 @@ if len(argv) < 2:
             proc = subprocess.run(['arbtt-dump', '-f', fullpath, '-t', 'JSON'], capture_output=True)
             parse_file(io.BytesIO(proc.stdout))
 
-else :
+else:
     parse_file(open(argv[1], 'r'))
-
-    # file = argv[1]
-
-
-
