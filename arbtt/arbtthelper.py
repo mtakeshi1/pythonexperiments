@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import subprocess
 from sys import argv
@@ -11,7 +11,7 @@ def parse_date(s: str) -> datetime:
     if s.find('.') >= 0:
         s = s[:s.find('.')]
     aa = datetime.fromisoformat(s)
-    return aa.replace(hour=aa.hour - 3)
+    return aa - timedelta(hours=3)
 
 
 def formatdate(d: datetime) -> str:
@@ -33,11 +33,12 @@ def parse_file(fileorstream):
         if not max or dt > mintime:
             maxtime = dt
         # print(e.keys())
-        if int(e['inactive']) >= 600000 and len(programs) > 0:
-            intervals[(mintime, maxtime)] = programs
-            programs = dict()
-            mintime = None
-            maxtime = None
+        if int(e['inactive']) >= 600000 :
+            if len(programs) > 0:
+                intervals[(mintime, maxtime)] = programs
+                programs = dict()
+                mintime = None
+                maxtime = None
         else:
             for w in e['windows']:
                 if w['active']:
