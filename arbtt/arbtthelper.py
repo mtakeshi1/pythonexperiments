@@ -50,7 +50,9 @@ def parse_file(fileorstream):
         intervals[(mintime, maxtime)] = programs
 
     for key, val in intervals.items():
-        print(f'{formatdate(key[0])}\t{formatdate(key[1])}\t{val}')
+        m = int((key[1] - key[0]).total_seconds()/60)
+        hours,mins = divmod(m, 60)
+        print(f'{formatdate(key[0])}\t{formatdate(key[1])} - total: {hours}:{mins}  \t{val}')
 
 
 if len(argv) < 2:
